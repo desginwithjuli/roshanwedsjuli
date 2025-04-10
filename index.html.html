@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roshan & Juli Wedding Invitation</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#D4145A',secondary:'#FFD700'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Yatra+One&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hindi-text {
+            font-family: 'Yatra One', cursive;
+        }
+        .gold-text {
+            background: linear-gradient(to right, #BF953F, #FCF6BA, #B38728, #FBF5B7, #AA771C);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0px 2px 4px rgba(0,0,0,0.1);
+        }
+        .event-card {
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+        .event-card:hover {
+            transform: translateY(-5px);
+        }
+        .event-details {
+            height: 0;
+            overflow: hidden;
+            transition: height 0.3s ease;
+        }
+        .event-card:hover .event-details {
+            height: auto;
+        }
+        /* .timeline-item {
+            position: relative; */
+        }
+        /* .timeline-item::before {
+            content: '';
+            position: absolute;
+            width: 2px;
+            background-color: rgba(255, 255, 255, 0.3);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%); */
+        }
+        .timeline-item:last-child::before {
+            height: 50%;
+        }
+        .timeline-dot {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #D4145A;
+            border-radius: 50%;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+        .countdown-item {
+            background: linear-gradient(135deg, rgba(212, 20, 90, 0.1), rgba(255, 215, 0, 0.1));
+            border: 1px solid rgba(212, 20, 90, 0.2);
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-checkbox {
+            position: relative;
+            padding-left: 35px;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+            height: 0;
+            width: 0;
+        }
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 24px;
+            width: 24px;
+            background-color: #fff;
+            border: 2px solid #D4145A;
+            border-radius: 4px;
+        }
+        .custom-checkbox input:checked ~ .checkmark {
+            background-color: #D4145A;
+        }
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+        .custom-checkbox input:checked ~ .checkmark:after {
+            display: block;
+        }
+        .custom-checkbox .checkmark:after {
+            left: 9px;
+            top: 5px;
+            width: 5px;
+            height: 10px;
+            border: solid white;
+            border-width: 0 2px 2px 0;
+            transform: rotate(45deg);
+        }
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body class="bg-white">
+    <!-- Header Navigation -->
+    <nav class="fixed top-0 left-0 w-full bg-white bg-opacity-95 shadow-sm z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex items-center">
+                <span class="hindi-text text-primary text-2xl">R&J</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="text-gray-700 hover:text-primary transition-colors">Home</a>
+                <a href="#events" class="text-gray-700 hover:text-primary transition-colors">Events</a>
+                <a href="#couple" class="text-gray-700 hover:text-primary transition-colors">Couple</a>
+                <a href="#journey" class="text-gray-700 hover:text-primary transition-colors">Our Journey</a>
+                <a href="#venue" class="text-gray-700 hover:text-primary transition-colors">Venue</a>
+                <a href="#rsvp" class="text-gray-700 hover:text-primary transition-colors">RSVP</a>
+            </div>
+            <div class="md:hidden w-8 h-8 flex items-center justify-center">
+                <i class="ri-menu-line text-xl"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen pt-20" style="background-image: url('https://public.readdy.ai/ai/img_res/44ced98d8de0b1d372eda3848bbb7d55.jpg'); background-size: cover; background-position: center;">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/30 to-black/60"></div>
+        <div class="relative z-10 max-w-7xl mx-auto px-6 py-20 flex flex-col items-center justify-center min-h-screen text-center">
+            <p class="hindi-text text-white text-xl mb-2">॥ श्री गणेशाय नमः ॥</p>
+            <p class="hindi-text text-white text-sm mb-8">ॐ वक्रतुण्ड महाकाय सूर्य कोटि समप्रभ, निर्विघ्नं कुरु मे देव सर्व कार्येषु सर्वदा</p>
+            
+            <h1 class="hindi-text gold-text text-5xl md:text-7xl mb-6">शुभ विवाह</h1>
+            
+            <div class="mb-8 floating">
+                <h2 class="text-4xl md:text-6xl font-['Pacifico'] text-white mb-2">Roshan <span class="text-red-500">❤️</span> Juli</h2>
+            </div>
+            
+            <div class="bg-white/10 backdrop-blur-md p-6 rounded-lg border border-white/20 mb-10">
+                <p class="text-white text-2xl mb-3">You Are Invited</p>
+                <p class="text-white text-xl font-semibold">Save the Date</p>
+                <p class="text-white text-3xl font-bold">08.05.2025 </p>
+            </div>
+            
+            <div class="flex space-x-4">
+                <a href="#rsvp" class="bg-primary hover:bg-primary/90 text-white px-8 py-3 !rounded-button whitespace-nowrap font-medium transition-all">RSVP Now</a>
+                <a href="#events" class="bg-white/10 backdrop-blur-md hover:bg-white/20 text-white border border-white/30 px-8 py-3 !rounded-button whitespace-nowrap font-medium transition-all">View Events</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-gradient-to-b from-white to-pink-50">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-3">Wedding Events</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join us for a week of celebrations filled with joy, traditions, and unforgettable moments</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Haldi Event Card -->
+                <div class="event-card bg-white rounded-lg shadow-lg overflow-hidden border border-yellow-200 hover:shadow-xl">
+                    <div class="h-48 bg-yellow-100 flex items-center justify-center">
+                        <div class="w-16 h-16 flex items-center justify-center bg-yellow-400 rounded-full">
+                            <i class="ri-sun-fill text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Haldi Ceremony</h3>
+                        <p class="text-yellow-600 font-medium mb-4">Unlock the Haldi Secrets 🔓</p>
+                        <div class="event-details">
+                            <div class="pt-4 border-t border-yellow-100">
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Date:</span> 2nd May, 2025</p>
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Time:</span> 10:00 AM</p>
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Venue:</span> Bride's Residence</p>
+                                <p class="text-gray-600 italic mt-4">"Haldi ka yellow power, brings beauty and good luck shower!"</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <button class="text-yellow-600 hover:text-yellow-800 font-medium flex items-center justify-center mx-auto">
+                                <span>View Details</span>
+                                <i class="ri-arrow-down-s-line ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mehendi Event Card -->
+                <div class="event-card bg-white rounded-lg shadow-lg overflow-hidden border border-green-200 hover:shadow-xl">
+                    <div class="h-48 bg-green-50 flex items-center justify-center">
+                        <div class="w-16 h-16 flex items-center justify-center bg-green-500 rounded-full">
+                            <i class="ri-leaf-fill text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Mehendi Ceremony</h3>
+                        <p class="text-green-600 font-medium mb-4">Click to Decode the Mehendi Magic</p>
+                        <div class="event-details">
+                            <div class="pt-4 border-t border-green-100">
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Date:</span> 4th May, 2025</p>
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Time:</span> 3:00 PM</p>
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Venue:</span> Bride's Residence</p>
+                                <p class="text-gray-600 italic mt-4">"Secret designs may reveal hidden love stories!"</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <button class="text-green-600 hover:text-green-800 font-medium flex items-center justify-center mx-auto">
+                                <span>View Details</span>
+                                <i class="ri-arrow-down-s-line ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sangeet Event Card -->
+                <div class="event-card bg-white rounded-lg shadow-lg overflow-hidden border border-purple-200 hover:shadow-xl">
+                    <div class="h-48 bg-purple-50 flex items-center justify-center">
+                        <div class="w-16 h-16 flex items-center justify-center bg-purple-500 rounded-full">
+                            <i class="ri-music-fill text-white text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-2">Sangeet Night</h3>
+                        <p class="text-purple-600 font-medium mb-4">Sangeet ka DJ dhamaka!</p>
+                        <div class="event-details">
+                            <div class="pt-4 border-t border-purple-100">
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Date:</span> 6th May, 2025</p>
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Time:</span> 7:00 PM</p>
+                                <p class="text-gray-700 mb-2"><span class="font-semibold">Venue:</span> Royal Garden Resort</p>
+                                <p class="text-gray-600 italic mt-4">"Dance like nobody's watching, but everyone will be!"</p>
+                            </div>
+                        </div>
+                        <div class="mt-4 text-center">
+                            <button class="text-purple-600 hover:text-purple-800 font-medium flex items-center justify-center mx-auto">
+                                <span>View Details</span>
+                                <i class="ri-arrow-down-s-line ml-1"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Wedding Day Card -->
+            <div class="mt-12 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg p-8 shadow-lg border border-primary/20">
+                <div class="flex flex-col md:flex-row items-center">
+                    <div class="w-full md:w-1/2 mb-8 md:mb-0 md:pr-8">
+                        <h3 class="text-3xl font-bold text-gray-800 mb-4">Wedding Ceremony</h3>
+                        <p class="text-gray-700 mb-6">The most auspicious day when Roshan and Juli will begin their journey together.</p>
+                        <div class="space-y-3">
+                            <p class="text-gray-700"><span class="font-semibold">Date:</span> 8th May, 2025</p>
+                            <p class="text-gray-700"><span class="font-semibold"><b>Barat From:</b></span> Village- Atrar, Po- Atrar, Thana-Aurai, District, Muazaffarpur 843129</p>
+                            <p class="text-gray-700"><span class="font-semibold"><b>नोट:</b></span> : श्री रमेश साह के द्वार से, <b>ग्राम अतरार से बारात संध्या 07 बजे महेश्वरा के लिए प्रस्थान करेगी।</b>
+                            </p>
+                        </div>
+                        <div class="mt-8">
+                            <a href="#rsvp" class="bg-primary hover:bg-primary/90 text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium transition-all inline-flex items-center">
+                                <span>RSVP Now</span>
+                                <i class="ri-arrow-right-s-line ml-1"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2 flex justify-center">
+                        <div class="w-64 h-64 rounded-full overflow-hidden border-4 border-white shadow-xl" style="background-image: url('https://public.readdy.ai/ai/img_res/570da657d8762302338490636ace0c74.jpg'); background-size: cover; background-position: center;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About the Couple Section -->
+    <section id="couple" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-3">About the Couple</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The perfect match made in heaven</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16">
+                <!-- Groom Card -->
+                <div class="w-full md:w-2/5 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-80 overflow-hidden">
+                        <img src="roshan.jpg" alt="Roshan Kumar" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-1">Roshan Kumar</h3>
+                        <p class="hindi-text text-lg text-gray-600 mb-3">रोशन कुमार</p>
+                        <p class="text-gray-700 mb-4"><span class="font-medium">S/o:</span> Shri Ramesh Sah</p>
+                        <p class="text-gray-600 italic">I am  a dynamic graphic designer and web developer!
+
+
+
+
+
+
+                            </p>
+                    </div>
+                </div>
+                
+                <!-- Heart Icon -->
+                <div class="relative">
+                    <div class="w-16 h-16 flex items-center justify-center bg-primary rounded-full shadow-lg floating">
+                        <i class="ri-heart-fill text-white text-2xl"></i>
+                    </div>
+                </div>
+                
+                <!-- Bride Card -->
+                <div class="w-full md:w-2/5 bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-80 overflow-hidden">
+                        <img src="juli.jpg" alt="Juli Kumari" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-bold text-gray-800 mb-1">Juli Kumari</h3>
+                        <p class="hindi-text text-lg text-gray-600 mb-3">जूली कुमारी</p>
+                        <p class="text-gray-700 mb-4"><span class="font-medium">D/o:</span> Shri Sharban Sah</p>
+                        <p class="text-gray-600 italic">"Simple, sanskari, and the queen of Roshan's heart ❤️"</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Journey Section -->
+    <section id="journey" class="py-20 bg-gradient-to-b from-pink-50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-3">Our Journey</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">The beautiful story of how we met and fell in love</p>
+            </div>
+            
+            <div class="relative">
+                <!-- Timeline Items -->
+                <div class="space-y-24 relative">
+                    <!-- First Meeting -->
+                    <div class="timeline-item flex flex-col md:flex-row items-center">
+                        <div class="timeline-dot"></div>
+                        <div class="w-full md:w-5/12 md:pr-16 md:text-right mb-8 md:mb-0">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">जब दो दिल पहली बार मिले</h3>
+                            <p class="text-primary font-medium mb-3"><b>स्थान: कालाजी मंदिर | दिनांक: 29 दिसम्बर</b></p><br>
+                            29 दिसम्बर 2024 —
+वो दिन जब दो दिल नहीं, दो परिवार एक-दूसरे को देखने आए थे।
+कालाजी मंदिर की सीढ़ियाँ चढ़ते हुए,
+थोड़ी सी झिझक, ढेर सारी उम्मीदें और दिल में छुपा हुआ उत्साह था।
+
+मेरे साथ मेरे माँ-पापा थे —
+जिन्होंने हमेशा मुझे सही रास्ता दिखाया,
+और आज वो मेरे लिए जीवनसाथी चुनने जा रहे थे।
+
+उधर Juli भी आई थी —
+अपने माता-पिता, भाई-बहन और पूरे परिवार के साथ।
+वो सजी थी सादगी में…
+पर उसकी आंखों में कुछ ऐसा था — जो सीधा दिल में उतर गया।
+
+पहली बार हम दोनों ने एक-दूसरे को देखा,
+न कोई बड़े वादे, न ज्यादा बातें…
+बस एक नजर, और दिलों में एक खामोश इकरार।
+
+माँ-पापा की आँखों में चमक थी,
+जैसे उन्होंने मेरे लिए वही पाया — जिसकी उन्होंने दुआ की थी।
+                        </div>
+                        <div class="w-full md:w-5/12 md:pl-16">
+                            <div class="rounded-lg overflow-hidden shadow-lg">
+                                <img src="first.jpg" alt="First Meeting" class="w-full h-64 object-cover object-top">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- First Date -->
+                    <div class="timeline-item flex flex-col md:flex-row-reverse items-center">
+                        <div class="timeline-dot"></div>
+                        <div class="w-full md:w-5/12 md:pl-16 mb-8 md:mb-0">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">सगाई </h3>
+                            <p class="text-primary font-medium mb-3"><b>स्थान: गाँव में, अपनों के बीच</b></p><br>
+                            <p class="text-gray-600"><b>फिर 7 फरवरी</b> को,
+                                गाँव में परिवार और रिश्तेदारों की खुशियों के बीच,
+                                हमने अपने रिश्ते को नाम दिया — सगाई।
+                                
+                                अब जब हम इस रिश्ते को आगे ले जा रहे हैं,
+                                हमारा हर कदम
+                                हमारे माता-पिता की दुआओं,
+                                हमारे रिश्तों की मिठास,
+                                और उस पहली मुलाक़ात की यादों से जुड़ा हुआ है।
+                                
+                                कहानी हमारी है,
+                                पर इसमें हर वो चेहरा शामिल है —
+                                जिसने हमें साथ लाने की दुआ की थी।
+                                
+                                </p>
+                        </div>
+                        <div class="w-full md:w-5/12 md:pr-16 md:text-right">
+                            <div class="rounded-lg overflow-hidden shadow-lg">
+                                <img src="ENG.jpg" alt="First Date" class="w-full h-64 object-cover object-top">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <!-- <div class="timeline-item flex flex-col md:flex-row items-center">
+                        <div class="timeline-dot"></div>
+                        <div class="w-full md:w-5/12 md:pr-16 md:text-right mb-8 md:mb-0">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">I am Roshan Guptal</h3>
+                            <p class="text-primary font-medium mb-3">Graphic Designer & Web Developer</p>
+                            <p class="text-gray-600">I am a passionate graphic designer from a small village called Atarar in Muzaffarpur, Bihar.
+                                I started my journey with a deep interest in creativity and design, and turned it into a full-time career.
+                                
+                                Today, I proudly manage design projects, run a coaching center for aspiring designers, and handle social media campaigns for national-level leaders.
+                                
+                                I believe in hard work, family values, and dreaming big.
+                                My roots keep me grounded, and my dreams push me forward.</p>
+                        </div>
+                        <div class="w-full md:w-5/12 md:pl-16">
+                            <div class="rounded-lg overflow-hidden shadow-lg">
+                                <img src="https://public.readdy.ai/ai/img_res/e0127aa74da38a092acea99c4a236218.jpg" alt="Proposal" class="w-full h-64 object-cover object-top">
+                            </div>
+                        </div>
+                    </div> -->
+                    
+                    <!-- Family Meeting
+                    <div class="timeline-item flex flex-col md:flex-row-reverse items-center">
+                        <div class="timeline-dot"></div>
+                        <div class="w-full md:w-5/12 md:pl-16 mb-8 md:mb-0">
+                            <h3 class="text-2xl font-bold text-gray-800 mb-2">Families Meet</h3>
+                            <p class="text-primary font-medium mb-3">10th March 2025</p>
+                            <p class="text-gray-600">Our families met and instantly connected. It was a beautiful day filled with laughter, food, and blessings.</p>
+                        </div>
+                        <div class="w-full md:w-5/12 md:pr-16 md:text-right">
+                            <div class="rounded-lg overflow-hidden shadow-lg">
+                                <img src="https://public.readdy.ai/ai/img_res/89ffd5897c04d142d39d9b9b51410d9a.jpg" alt="Families Meet" class="w-full h-64 object-cover object-top">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- Venue Section -->
+    <section id="venue" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-3">Wedding Venue</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Join us at these beautiful locations to celebrate our special day</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Groom's Venue -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 relative">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('am.jpg');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-1">Groom's Residence</h3>
+                            <p>अतरार, मुजफ्फरपुर</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-4">The baraat will start from here on 8th May at 7:00 PM</p>
+                        <div class="flex items-center text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <p class="ml-2"><b>ग्राम+पोस्ट: अतरार, थाना- औराई, जिला: मुजफ्फरपुर, बिहार: 843129</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bride's Venue -->
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="h-64 relative">
+                        <div class="absolute inset-0 bg-cover bg-center" style="background-image: url('mm.jpg');"></div>
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        <div class="absolute bottom-0 left-0 p-6 text-white">
+                            <h3 class="text-2xl font-bold mb-1">Wedding Venue</h3>
+                            <p>Maheshwara, Bihar</p>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <p class="text-gray-700 mb-4">The wedding ceremony will take place here on 8th May at 10:00 PM</p>
+                        <div class="flex items-center text-primary">
+                            <div class="w-8 h-8 flex items-center justify-center">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <p class="ml-2"> <b>ग्राम+पोस्ट: महेशवारा, थाना: गायघाट, जिला: मुजफ्फरपुर, बिहार: 847107</b>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="hhttps://www.google.com/maps?gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIJCAEQABgNGIAEMgkIAhAAGA0YgAQyCQgDEAAYDRiABDIJCAQQABgNGIAEMgkIBRAAGA0YgAQyCQgGEAAYDRiABDIJCAcQABgNGIAEMgkICBAAGA0YgAQyCQgJEAAYDRiABNIBCDE5MjhqMGo3qAIAsAIA&um=1&ie=UTF-8&fb=1&gl=in&sa=X&geocode=KUfz0L8que05MU5x3Yhra5VU&daddr=5V3R%2BPP7,+Darbhanga+Tower,+Bada+Bazar,+Lal+Bagh,+Darbhanga,+Bihar+846004" target="_blank" class="inline-flex items-center text-primary hover:text-primary/80 font-medium">
+                    <span>Get Directions</span>
+                    <div class="w-6 h-6 flex items-center justify-center ml-1">
+                        <i class="ri-arrow-right-line"></i>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- RSVP Section -->
+    <section id="rsvp" class="py-20 bg-gradient-to-b from-pink-50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold text-gray-800 mb-3">RSVP</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">We would be honored by your presence on our special day</p>
+            </div>
+            
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- RSVP Form -->
+                <div class="bg-white rounded-lg shadow-lg p-8">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Share Your Wishes</h3>
+                    <form>
+                        <div class="mb-6">
+                            <label for="name" class="block text-gray-700 font-medium mb-2">Your Name</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Enter your full name">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="email" class="block text-gray-700 font-medium mb-2">Email Address</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Enter your email">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="phone" class="block text-gray-700 font-medium mb-2">Phone Number</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" placeholder="Enter your phone number">
+                        </div>
+                        
+                        <div class="mb-6">
+                            <label for="guests" class="block text-gray-700 font-medium mb-2">Type Your Message Wishes/ Message</label>
+                            <input type="number" id="guests" class="w-full px-4 py-3 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary" min="1" max="5" placeholder="How many guests will attend?">
+                        </div>
+                        
+                        <div class="mb-8">
+                            <p class="block text-gray-700 font-medium mb-3">Which events will you attend?</p>
+                            <div class="space-y-3">
+                                <label class="custom-checkbox block text-gray-600">
+                                    Haldi Ceremony (2nd May)
+                                    <input type="checkbox" name="events[]" value="haldi">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="custom-checkbox block text-gray-600">
+                                    Mehendi Ceremony (4th May)
+                                    <input type="checkbox" name="events[]" value="mehendi">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="custom-checkbox block text-gray-600">
+                                    Sangeet Night (6th May)
+                                    <input type="checkbox" name="events[]" value="sangeet">
+                                    <span class="checkmark"></span>
+                                </label>
+                                <label class="custom-checkbox block text-gray-600">
+                                    Wedding Ceremony (8th May)
+                                    <input type="checkbox" name="events[]" value="wedding" checked>
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="w-full bg-primary hover:bg-primary/90 text-white font-medium py-3 !rounded-button whitespace-nowrap transition-all"> Send Wishes</button>
+                    </form>
+                </div>
+                
+                <!-- Contact Cards -->
+                <div>
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">Contact Information</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Shri Ramesh Sah</h4>
+                            <p class="text-gray-600 mb-3">Father of the Groom</p>
+                            <div class="flex items-center text-primary">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <a href="tel:+919911181574" class="ml-2">+91 9911 181 574</a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Shri Sharban Sah</h4>
+                            <p class="text-gray-600 mb-3">Father of the Bride</p>
+                            <div class="flex items-center text-primary">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <a href="tel:+919525323430" class="ml-2">+91 84099 88277</a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Abhishek Kumar</h4>
+                            <p class="text-gray-600 mb-3">Brother of the Groom</p>
+                            <div class="flex items-center text-primary">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <a href="tel:+918876543210" class="ml-2">+91 8800157452</a>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg shadow-lg p-6 border border-gray-100 hover:shadow-xl transition-all">
+                            <h4 class="text-lg font-bold text-gray-800 mb-2">Sharban Sah</h4>
+                            <p class="text-gray-600 mb-3">Uncel of Groom</p>
+                            <div class="flex items-center text-primary">
+                                <div class="w-6 h-6 flex items-center justify-center">
+                                    <i class="ri-phone-line"></i>
+                                </div>
+                                <a href="tel:+917765432109" class="ml-2">+91 9311451445</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 p-6 bg-gradient-to-r from-primary/10 to-secondary/10 rounded-lg">
+                        <p class="text-gray-700 italic text-center">"रंगों से सजी एक नई तस्वीर होगी,  
+                            Roshan और Juli की जोड़ी सबसे खास तस्सीर होगी।  
+                            हर रस्म, हर पल में होगा बस प्यार,  
+                            शादी के इस जश्न में होगा सबका भरपूर सत्कार। "</p>
+                    </div>
+                    
+                    <!-- Countdown Timer -->
+                    <div class="mt-8">
+                        <h4 class="text-xl font-bold text-gray-800 mb-4 text-center">Countdown to the Big Day</h4>
+                        <div class="grid grid-cols-4 gap-4">
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div class="text-3xl font-bold text-primary" id="days">25</div>
+                                <div class="text-gray-600 text-sm">Days</div>
+                            </div>
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div class="text-3xl font-bold text-primary" id="hours">14</div>
+                                <div class="text-gray-600 text-sm">Hours</div>
+                            </div>
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div class="text-3xl font-bold text-primary" id="minutes">36</div>
+                                <div class="text-gray-600 text-sm">Minutes</div>
+                            </div>
+                            <div class="countdown-item rounded-lg p-4 text-center">
+                                <div class="text-3xl font-bold text-primary" id="seconds">52</div>
+                                <div class="text-gray-600 text-sm">Seconds</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="col-span-1 md:col-span-2">
+                    <h3 class="text-2xl font-['Pacifico'] mb-4">R&J</h3>
+                    <p class="text-gray-400 mb-6">Thank you for being a part of our special day. Your presence will make our celebration complete.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-primary transition-colors">
+                            <i class="ri-facebook-fill text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-primary transition-colors">
+                            <i class="ri-instagram-line text-white"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 flex items-center justify-center bg-white/10 rounded-full hover:bg-primary transition-colors">
+                            <i class="ri-whatsapp-line text-white"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#events" class="text-gray-400 hover:text-white transition-colors">Events</a></li>
+                        <li><a href="#couple" class="text-gray-400 hover:text-white transition-colors">Couple</a></li>
+                        <li><a href="#journey" class="text-gray-400 hover:text-white transition-colors">Our Journey</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-lg font-bold mb-4">More Info</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#venue" class="text-gray-400 hover:text-white transition-colors">Venue</a></li>
+                        <li><a href="#rsvp" class="text-gray-400 hover:text-white transition-colors">RSVP</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Gift Registry</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Photo Gallery</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-12 pt-8 border-t border-gray-800 text-center">
+                <p class="text-gray-500">© 2025 Roshan & Juli Wedding. All Rights Reserved.</p>
+                <p class="text-gray-500 mt-2">Wedding Date: 8th May, 2025</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Event card interaction
+        document.querySelectorAll('.event-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const details = this.querySelector('.event-details');
+                if (details.style.height === 'auto') {
+                    details.style.height = '0';
+                } else {
+                    details.style.height = 'auto';
+                }
+            });
+        });
+        
+        // Countdown Timer
+        function updateCountdown() {
+            const weddingDate = new Date('May 8, 2025 11:00:00').getTime();
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            document.getElementById('days').innerText = days;
+            document.getElementById('hours').innerText = hours;
+            document.getElementById('minutes').innerText = minutes;
+            document.getElementById('seconds').innerText = seconds;
+        }
+        
+        // Initial call and then update every second
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
